@@ -1,4 +1,6 @@
 import scipy.stats as scs
+import numpy as np
+import matplotlib.pyplot as plt
 
 p = 0.5 # określenie prawdopodobieństwa sukcesu w rozkładzie bernoulliego oraz dumianowym
 date_size = 10000 # wielkość geenerowanego zbioru danych
@@ -18,3 +20,12 @@ for i in range(0,n+1):
     sumaPrawdopodobieństw = sumaPrawdopodobieństw + prawdopodobienstwoDwumianowy
 
 print(sumaPrawdopodobieństw)
+
+#rozkład Poissona
+m = 10
+rv = scs.poisson(m)
+x = np.arange(scs.poisson.ppf(0.0001,m), scs.poisson.ppf(0.9999,m))
+
+fig, ax = plt.subplots(1,1)
+ax.vlines(x, 0,rv.pmf(x), colors='r', linestyles='-', lw=7)
+plt.show()
